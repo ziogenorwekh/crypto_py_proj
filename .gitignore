@@ -1,0 +1,40 @@
+### Python & FastAPI ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-selfcheck.json
+pyvenv.cfg
+
+# FastAPI/Uvicorn logs
+*.log
+
+### Pandas & Data (중요!) ###
+# 데이터 분석하다 생기는 대용량 파일들 방지
+*.csv
+*.xlsx
+*.parquet
+*.pickle
+*.jsonl
+/data/
+/outputs/
+
+### Environment Variables (보안!) ###
+.env
+.env.*
+
+### IDE - PyCharm (JetBrains) ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### OS & Misc ###
+.DS_Store
+Thumbs.db
+.vscode/

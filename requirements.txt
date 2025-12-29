@@ -1,0 +1,21 @@
+# Web Framework & Server
+fastapi
+uvicorn[standard]
+
+# Database (PostgreSQL & ORM)
+sqlalchemy[asyncio]
+asyncpg
+psycopg2-binary
+
+# Data Analysis
+pandas
+numpy
+
+# Connectivity
+websockets
+httpx
+
+# Env management (자바의 application.properties 같은 거 관리용)
+python-dotenv
+
+pydantic-settings
