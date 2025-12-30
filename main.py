@@ -3,9 +3,11 @@ import asyncio
 from fastapi import FastAPI
 from app.database import engine, Base
 # 중요! 여기서 모델을 임포트 안 하면 Base가 어떤 테이블을 만들어야 할지 모름
-from app.trades.models import Trade
-from app.trades.service import collect_upbit_trades
+from app.trades.services.controller import collect_upbit_trades
+from app.trades.router import router as trade_router
+
 app = FastAPI()
+app.include_router(trade_router)
 
 
 @app.on_event("startup")

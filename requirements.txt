@@ -1,21 +1,23 @@
 # Web Framework & Server
-fastapi
+fastapi~=0.128.0
 uvicorn[standard]
 
 # Database (PostgreSQL & ORM)
-sqlalchemy[asyncio]
+sqlalchemy[asyncio]~=2.0.45
 asyncpg
 psycopg2-binary
 
 # Data Analysis
-pandas
+pandas~=2.3.3
 numpy
 
 # Connectivity
-websockets
+websockets~=15.0.1
 httpx
 
 # Env management (자바의 application.properties 같은 거 관리용)
 python-dotenv
 
 pydantic-settings
+pydantic~=2.12.5
+matplotlib~=3.10.8
