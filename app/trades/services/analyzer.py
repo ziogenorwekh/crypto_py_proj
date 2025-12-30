@@ -17,14 +17,20 @@ class TradeAnalyzer:
         df = pd.DataFrame([
             {"price": t.price, "amount": t.amount, "side": t.side, "ts": t.timestamp} for t in trades
         ])
+        df = df.sort_values("ts")
+
+        df['ma7'] = df['price'].rolling(window=7).mean()
+
+        latest_ma7 = float(df['price'].iloc[-1]) if not df['ma7'].isnull().all() else None
 
         stats = {
             "symbol": symbol,
             "avg_price": float(df["price"].mean()),  # average price
-            "max_price": float(df["price"].max()), # max price
+            "max_price": float(df["price"].max()),  # max price
             "min_price": float(df["price"].min()),
             "total_volume": float(df["amount"].sum()),
             "buy_amount": int(len(df[df["side"] == "BID"])),
-            "sell_amount": int(len(df[df["side"] == "ASK"]))
+            "sell_amount": int(len(df[df["side"] == "ASK"])),
+            "ma7": latest_ma7
         }
         return stats
