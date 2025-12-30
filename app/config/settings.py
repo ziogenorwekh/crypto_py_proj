@@ -9,6 +9,9 @@ class Settings(BaseSettings):
 
     PROJECT_NAME: str = "crypto Real-time Analysis"
 
+    TELEGRAM_TOKEN: str | None = None
+    TELEGRAM_CHAT_ID: str | None = None
+
     model_config = SettingsConfigDict(
         env_file=".env",
         case_sensitive=True,

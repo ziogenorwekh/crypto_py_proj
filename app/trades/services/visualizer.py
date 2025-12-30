@@ -26,11 +26,11 @@ class TradeVisualizer:
 
         fig, ax = plt.subplots(figsize=(12, 6))
 
-        ax.plot(df["ts"], df["price"], marker="", linestyle="-", color='#007bff',alpha=0.5, linewidth=1, label="Price")
+        ax.plot(df["ts"], df["price"], marker="", linestyle="-", color='#007bff', alpha=0.5, linewidth=1, label="Price")
 
-        ax.plot(df["ts"],df["ma7"], marker="", linestyle="--",color='#ff4d4d',linewidth=2, label="MA7")
+        ax.plot(df["ts"], df["ma7"], marker="", linestyle="--", color='#ff4d4d', linewidth=2, label="MA7")
 
-        ax.plot(df["ts"],df["ma20"],color='#ffa500',linewidth=2, label="MA20")
+        ax.plot(df["ts"], df["ma20"], color='#ffa500', linewidth=2, label="MA20")
 
         ax.get_yaxis().set_major_formatter(ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
         margin = (df["price"].max() - df["price"].min()) * 0.1
