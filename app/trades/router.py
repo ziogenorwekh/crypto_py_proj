@@ -3,10 +3,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from typing import List
 
+from starlette.responses import StreamingResponse
+
 from app.database import get_db
 from app.trades.models import Trade
 from app.trades.schemas import TradeResponse
 from app.trades.services.analyzer import TradeAnalyzer
+from app.trades.services.visualizer import TradeVisualizer
 
 router = APIRouter(prefix="/trades", tags=["Trades"])
 
@@ -42,3 +45,12 @@ async def get_trade_stats(
     if not stats:
         return {"message": "No data found for this symbol"}
     return stats
+
+
+@router.get("/chart/{symbol}")
+async def get_trade_chart(symbol: str, db: AsyncSession = Depends(get_db)):
+    image_buf = await TradeVisualizer.save_price_chart(db, symbol)
+    if not image_buf:
+        return {"message": "No data"}
+
+    return StreamingResponse(image_buf, media_type="image/png")
